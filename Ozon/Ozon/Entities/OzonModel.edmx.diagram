@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a8321558490d4e37b8a0d45123468016" Name="Diagram1">
+        <EntityTypeShape EntityType="OzonModel.Buyer" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OzonModel.Doljnost" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="OzonModel.Point_of_issue" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OzonModel.Role" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="OzonModel.Sotrydnik" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OzonModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OzonModel.Tovar" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OzonModel.User" Width="1.5" PointX="8" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OzonModel.Zakaz" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="OzonModel.FK_Zakaz_Buyer" ManuallyRouted="false" />
+        <AssociationConnector Association="OzonModel.FK_Sotrydnik_Doljnost" ManuallyRouted="false" />
+        <AssociationConnector Association="OzonModel.FK_Zakaz_Point_of_issue" ManuallyRouted="false" />
+        <AssociationConnector Association="OzonModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="OzonModel.FK_Zakaz_Sotrydnik" ManuallyRouted="false" />
+        <AssociationConnector Association="OzonModel.FK_Zakaz_tovar" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

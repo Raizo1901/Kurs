@@ -1,0 +1,36 @@
+﻿<Page x:Class="Ozon.Pages.SalaryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Ozon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+       Title="Зарплата">
+
+    <Grid>
+        <Border Style="{DynamicResource BorderLog}"></Border>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Должность" Margin="5"></TextBlock>
+                <ComboBox Style="{StaticResource ComboBoxInf}" Name="ComboTypeSalary">
+                    <ComboBoxItem Content="Компоновщик"></ComboBoxItem>
+                    <ComboBoxItem Content="Администратор"></ComboBoxItem>
+                    <ComboBoxItem Content="Оператор"></ComboBoxItem>
+                    <ComboBoxItem Content="Консультант"></ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Часы работы"></TextBlock>
+                <TextBox Style="{StaticResource BoxInf}" Name="BoxPeriod" PreviewTextInput="BoxPeriod_PreviewTextInput"></TextBox>
+            </StackPanel>
+            <Button Content="Рассчитать" Style="{StaticResource ButtStyle}" Name="ButtRashet" Click="ButtRashet_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

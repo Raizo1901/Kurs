@@ -1,0 +1,41 @@
+﻿<Page x:Class="Ozon.Pages.AdditionalInformationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Ozon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Заполнение">
+
+    <Grid>
+        <Border Style="{DynamicResource BorderLog}"></Border>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Фамилия:"></TextBlock>
+                <TextBox Style="{StaticResource AdditionalInformation}" Name="TBoxFam" Margin="10,0,0,0" PreviewTextInput="TBoxFam_PreviewTextInput"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Имя:"></TextBlock>
+                <TextBox Style="{StaticResource AdditionalInformation}" Name="TBoxIma" Margin="36,0,0,0" PreviewTextInput="TBoxIma_PreviewTextInput"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Отчество:"></TextBlock>
+                <TextBox Style="{StaticResource AdditionalInformation}" Name="TBoxOtchestvo" Margin="9,0,0,0" PreviewTextInput="TBoxOtchestvo_PreviewTextInput"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Город:"></TextBlock>
+                <TextBox Style="{StaticResource AdditionalInformation}" Name="TBoxCity" Margin="27,0,0,0" PreviewTextInput="TBoxCity_PreviewTextInput"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource btnAdditionalInformation}" x:Name="BtnNext" Click="BtnNext_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AA218BD9-F061-4147-8B03-C8289E41898B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Ozon</RootNamespace>
+    <AssemblyName>Ozon</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Buyer.cs">
+      <DependentUpon>OzonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BuyerPartial.cs" />
+    <Compile Include="Entities\Doljnost.cs">
+      <DependentUpon>OzonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OzonModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OzonModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OzonModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OzonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OzonModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OzonModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Point_of_issue.cs">
+      <DependentUpon>OzonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Role.cs">
+      <DependentUpon>OzonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SotrPartial.cs" />
+    <Compile Include="Entities\Sotrydnik.cs">
+      <DependentUpon>OzonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\sysdiagram.cs">
+      <DependentUpon>OzonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Tovar.cs">
+      <DependentUpon>OzonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TovarPartial.cs" />
+    <Compile Include="Entities\User.cs">
+      <DependentUpon>OzonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Zakaz.cs">
+      <DependentUpon>OzonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\AddEditSotrPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditTovarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdditionalInformationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BuyerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NavigatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SalaryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SotrPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TovarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ZakazPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\AddEditSotrPage.xaml.cs">
+      <DependentUpon>AddEditSotrPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditTovarPage.xaml.cs">
+      <DependentUpon>AddEditTovarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdditionalInformationPage.xaml.cs">
+      <DependentUpon>AdditionalInformationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BuyerPage.xaml.cs">
+      <DependentUpon>BuyerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NavigatePage.xaml.cs">
+      <DependentUpon>NavigatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SalaryPage.xaml.cs">
+      <DependentUpon>SalaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SotrPage.xaml.cs">
+      <DependentUpon>SotrPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TovarPage.xaml.cs">
+      <DependentUpon>TovarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ZakazPage.xaml.cs">
+      <DependentUpon>ZakazPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Entities\OzonModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OzonModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\OzonModel.edmx.diagram">
+      <DependentUpon>OzonModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\1.jpg" />
+    <Resource Include="Image\10.jpg" />
+    <Resource Include="Image\11.jpg" />
+    <Resource Include="Image\12.jpg" />
+    <Resource Include="Image\13.jpg" />
+    <Resource Include="Image\14.jpg" />
+    <Resource Include="Image\15.jpg" />
+    <Resource Include="Image\16.jpg" />
+    <Resource Include="Image\17.jpg" />
+    <Resource Include="Image\18.jpg" />
+    <Resource Include="Image\19.jpg" />
+    <Resource Include="Image\2.jpg" />
+    <Resource Include="Image\20.jpg" />
+    <Resource Include="Image\21.jpg" />
+    <Resource Include="Image\22.jpg" />
+    <Resource Include="Image\23.jpg" />
+    <Resource Include="Image\24.jpg" />
+    <Resource Include="Image\3.jpg" />
+    <Resource Include="Image\30.jpg" />
+    <Resource Include="Image\4.jpg" />
+    <Resource Include="Image\5.jpg" />
+    <Resource Include="Image\6.jpg" />
+    <Resource Include="Image\7.jpg" />
+    <Resource Include="Image\8.jpg" />
+    <Resource Include="Image\9.jpg" />
+    <Resource Include="Image\kisspng-user-profile-2018-in-sight-user-conference-expo-5b554c0968c377.0307553315323166814291.jpg" />
+    <Resource Include="Image\logo.jpg" />
+    <Resource Include="Image\logoOrig.png" />
+    <Resource Include="Image\ozon.gif" />
+    <Resource Include="Image\ozon_logo.gif" />
+    <Resource Include="Image\ozon_logo1.gif" />
+    <Resource Include="Image\Ozon_logo_b.png" />
+    <Resource Include="Image\user.jpg" />
+    <Resource Include="Image\Вафельница Pioneer SM315D.jpg" />
+    <Resource Include="Image\Гладильная доска Nika.jpg" />
+    <Resource Include="Image\Конструктор Loz.jpg" />
+    <Resource Include="Image\Лакомство для собак всех пород.jpeg" />
+    <Resource Include="Image\Мини пила для дерева.jpeg" />
+    <Resource Include="Image\Назад.png" />
+    <Resource Include="Image\Самокат-трансформер.jpg" />
+    <Resource Include="Image\Сотрудник.png" />
+    <Resource Include="Image\Утюг.jpg" />
+    <Resource Include="Image\Фен для укладки и сушки волос профессиональный с концентратором.jpg" />
+    <Resource Include="Image\фон.jpg" />
+    <Resource Include="Image\фонРазм.png" />
+    <Resource Include="Image\Часы.jpg" />
+    <Resource Include="Image\Швабра для мытья полов с распылителем.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WSUniversalLib\WSUniversalLib.csproj">
+      <Project>{216293ff-1dfe-4538-9487-431f9688e116}</Project>
+      <Name>WSUniversalLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\OzonModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OzonModel.Context.cs</LastGenOutput>
+      <DependentUpon>OzonModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Entities\OzonModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OzonModel.edmx</DependentUpon>
+      <LastGenOutput>OzonModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,47 @@
+﻿<Page x:Class="Ozon.Pages.ZakazPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Ozon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+        Title="Заказ">
+
+    <Grid>
+        <Border Style="{DynamicResource BorderLog}"></Border>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Выберите товар:"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                <ComboBox Style="{StaticResource CBZakaz}" Name="CBoxTovar" Margin="0,0,5,0" IsReadOnly="True"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Количество:" Margin="5"></TextBlock>
+                <TextBox Style="{StaticResource AdditionalInformation}" MaxLength="3" Width="30" Name="TBoxQuantity" Margin="5,0,0,0"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Выберите точку выдачи:"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                <ComboBox Style="{StaticResource CBZakaz}" Name="CBoxPoint" IsReadOnly="True" Margin="0,0,5,0">
+                    <ComboBoxItem>Г.Вологда,Ул.Мира,Д.38</ComboBoxItem>
+                    <ComboBoxItem>Г.Вологда,Ул.Герцена,Д.27</ComboBoxItem>
+                    <ComboBoxItem>Г.Вологда,Ул.Кирова,Д.21</ComboBoxItem>
+                    <ComboBoxItem>Г.Вологда,Ул.Челюскинцев,Д.47</ComboBoxItem>
+                    <ComboBoxItem>Г.Вологда,Ул.Ветошкина,Д.54</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource btnZakaz}" x:Name="BtnZakaz" Click="BtnZakaz_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

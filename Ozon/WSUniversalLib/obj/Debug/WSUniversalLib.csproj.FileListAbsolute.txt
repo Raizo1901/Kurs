@@ -1,0 +1,6 @@
+D:\Курсовой 2023\Интернет магазин Ozon\Ozon\WSUniversalLib\bin\Debug\WSUniversalLib.dll
+D:\Курсовой 2023\Интернет магазин Ozon\Ozon\WSUniversalLib\bin\Debug\WSUniversalLib.pdb
+D:\Курсовой 2023\Интернет магазин Ozon\Ozon\WSUniversalLib\obj\Debug\WSUniversalLib.csproj.AssemblyReference.cache
+D:\Курсовой 2023\Интернет магазин Ozon\Ozon\WSUniversalLib\obj\Debug\WSUniversalLib.csproj.CoreCompileInputs.cache
+D:\Курсовой 2023\Интернет магазин Ozon\Ozon\WSUniversalLib\obj\Debug\WSUniversalLib.dll
+D:\Курсовой 2023\Интернет магазин Ozon\Ozon\WSUniversalLib\obj\Debug\WSUniversalLib.pdb

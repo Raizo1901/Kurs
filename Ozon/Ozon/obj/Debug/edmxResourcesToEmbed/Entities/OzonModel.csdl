@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OzonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Buyer">
+    <Key>
+      <PropertyRef Name="Id_buyer" />
+    </Key>
+    <Property Name="Id_buyer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ima" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Zakazs" Relationship="Self.FK_Zakaz_Buyer" FromRole="Buyer" ToRole="Zakaz" />
+  </EntityType>
+  <EntityType Name="Doljnost">
+    <Key>
+      <PropertyRef Name="Id_doljnosti" />
+    </Key>
+    <Property Name="Id_doljnosti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sotrydniks" Relationship="Self.FK_Sotrydnik_Doljnost" FromRole="Doljnost" ToRole="Sotrydnik" />
+  </EntityType>
+  <EntityType Name="Point_of_issue">
+    <Key>
+      <PropertyRef Name="Id_point_of_issue" />
+    </Key>
+    <Property Name="Id_point_of_issue" Type="Int32" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="house_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Zakazs" Relationship="Self.FK_Zakaz_Point_of_issue" FromRole="Point_of_issue" ToRole="Zakaz" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Sotrydnik">
+    <Key>
+      <PropertyRef Name="Id_Sotrydnik" />
+    </Key>
+    <Property Name="Id_Sotrydnik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ima" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id_doljnosti" Type="Int32" />
+    <Property Name="Salary_per_hour" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Doljnost" Relationship="Self.FK_Sotrydnik_Doljnost" FromRole="Sotrydnik" ToRole="Doljnost" />
+    <NavigationProperty Name="Zakazs" Relationship="Self.FK_Zakaz_Sotrydnik" FromRole="Sotrydnik" ToRole="Zakaz" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tovar">
+    <Key>
+      <PropertyRef Name="Id_tovar" />
+    </Key>
+    <Property Name="Id_tovar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Zakazs" Relationship="Self.FK_Zakaz_tovar" FromRole="Tovar" ToRole="Zakaz" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Login" />
+    </Key>
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Zakaz">
+    <Key>
+      <PropertyRef Name="Id_zakaz" />
+    </Key>
+    <Property Name="Id_zakaz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_buyer" Type="Int32" />
+    <Property Name="Id_sotrydnik" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id_tovar" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Id_point_of_issue" Type="Int32" />
+    <Property Name="Stoimost_zak" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Buyer" Relationship="Self.FK_Zakaz_Buyer" FromRole="Zakaz" ToRole="Buyer" />
+    <NavigationProperty Name="Point_of_issue" Relationship="Self.FK_Zakaz_Point_of_issue" FromRole="Zakaz" ToRole="Point_of_issue" />
+    <NavigationProperty Name="Sotrydnik" Relationship="Self.FK_Zakaz_Sotrydnik" FromRole="Zakaz" ToRole="Sotrydnik" />
+    <NavigationProperty Name="Tovar" Relationship="Self.FK_Zakaz_tovar" FromRole="Zakaz" ToRole="Tovar" />
+  </EntityType>
+  <Association Name="FK_Zakaz_Buyer">
+    <End Role="Buyer" Type="Self.Buyer" Multiplicity="0..1" />
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buyer">
+        <PropertyRef Name="Id_buyer" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="Id_buyer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sotrydnik_Doljnost">
+    <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="0..1" />
+    <End Role="Sotrydnik" Type="Self.Sotrydnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doljnost">
+        <PropertyRef Name="Id_doljnosti" />
+      </Principal>
+      <Dependent Role="Sotrydnik">
+        <PropertyRef Name="Id_doljnosti" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zakaz_Point_of_issue">
+    <End Role="Point_of_issue" Type="Self.Point_of_issue" Multiplicity="0..1" />
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Point_of_issue">
+        <PropertyRef Name="Id_point_of_issue" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="Id_point_of_issue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zakaz_Sotrydnik">
+    <End Role="Sotrydnik" Type="Self.Sotrydnik" Multiplicity="0..1" />
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrydnik">
+        <PropertyRef Name="Id_Sotrydnik" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="Id_sotrydnik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zakaz_tovar">
+    <End Role="Tovar" Type="Self.Tovar" Multiplicity="0..1" />
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tovar">
+        <PropertyRef Name="Id_tovar" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="Id_tovar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OzonEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Buyers" EntityType="Self.Buyer" />
+    <EntitySet Name="Doljnosts" EntityType="Self.Doljnost" />
+    <EntitySet Name="Point_of_issue" EntityType="Self.Point_of_issue" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Sotrydniks" EntityType="Self.Sotrydnik" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tovars" EntityType="Self.Tovar" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Zakazs" EntityType="Self.Zakaz" />
+    <AssociationSet Name="FK_Zakaz_Buyer" Association="Self.FK_Zakaz_Buyer">
+      <End Role="Buyer" EntitySet="Buyers" />
+      <End Role="Zakaz" EntitySet="Zakazs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sotrydnik_Doljnost" Association="Self.FK_Sotrydnik_Doljnost">
+      <End Role="Doljnost" EntitySet="Doljnosts" />
+      <End Role="Sotrydnik" EntitySet="Sotrydniks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zakaz_Point_of_issue" Association="Self.FK_Zakaz_Point_of_issue">
+      <End Role="Point_of_issue" EntitySet="Point_of_issue" />
+      <End Role="Zakaz" EntitySet="Zakazs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zakaz_Sotrydnik" Association="Self.FK_Zakaz_Sotrydnik">
+      <End Role="Sotrydnik" EntitySet="Sotrydniks" />
+      <End Role="Zakaz" EntitySet="Zakazs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zakaz_tovar" Association="Self.FK_Zakaz_tovar">
+      <End Role="Tovar" EntitySet="Tovars" />
+      <End Role="Zakaz" EntitySet="Zakazs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

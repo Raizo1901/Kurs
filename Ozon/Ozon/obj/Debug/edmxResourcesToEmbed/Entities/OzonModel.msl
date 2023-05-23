@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище OzonModelContainer" CdmEntityContainer="OzonEntities">
+    <EntitySetMapping Name="Buyers">
+      <EntityTypeMapping TypeName="OzonModel.Buyer">
+        <MappingFragment StoreEntitySet="Buyer">
+          <ScalarProperty Name="Id_buyer" ColumnName="Id_buyer" />
+          <ScalarProperty Name="Familia" ColumnName="Familia" />
+          <ScalarProperty Name="Ima" ColumnName="Ima" />
+          <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doljnosts">
+      <EntityTypeMapping TypeName="OzonModel.Doljnost">
+        <MappingFragment StoreEntitySet="Doljnost">
+          <ScalarProperty Name="Id_doljnosti" ColumnName="Id_doljnosti" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Point_of_issue">
+      <EntityTypeMapping TypeName="OzonModel.Point_of_issue">
+        <MappingFragment StoreEntitySet="Point_of_issue">
+          <ScalarProperty Name="Id_point_of_issue" ColumnName="Id_point_of_issue" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="house_number" ColumnName="house_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="OzonModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sotrydniks">
+      <EntityTypeMapping TypeName="OzonModel.Sotrydnik">
+        <MappingFragment StoreEntitySet="Sotrydnik">
+          <ScalarProperty Name="Id_Sotrydnik" ColumnName="Id_Sotrydnik" />
+          <ScalarProperty Name="Familia" ColumnName="Familia" />
+          <ScalarProperty Name="Ima" ColumnName="Ima" />
+          <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+          <ScalarProperty Name="Id_doljnosti" ColumnName="Id_doljnosti" />
+          <ScalarProperty Name="Salary_per_hour" ColumnName="Salary_per_hour" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="OzonModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tovars">
+      <EntityTypeMapping TypeName="OzonModel.Tovar">
+        <MappingFragment StoreEntitySet="Tovar">
+          <ScalarProperty Name="Id_tovar" ColumnName="Id_tovar" />
+          <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="OzonModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zakazs">
+      <EntityTypeMapping TypeName="OzonModel.Zakaz">
+        <MappingFragment StoreEntitySet="Zakaz">
+          <ScalarProperty Name="Id_zakaz" ColumnName="Id_zakaz" />
+          <ScalarProperty Name="Id_buyer" ColumnName="Id_buyer" />
+          <ScalarProperty Name="Id_sotrydnik" ColumnName="Id_sotrydnik" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Id_tovar" ColumnName="Id_tovar" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Id_point_of_issue" ColumnName="Id_point_of_issue" />
+          <ScalarProperty Name="Stoimost_zak" ColumnName="Stoimost_zak" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

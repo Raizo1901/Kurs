@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище OzonModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Buyer">
+    <Key>
+      <PropertyRef Name="Id_buyer" />
+    </Key>
+    <Property Name="Id_buyer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Familia" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ima" Type="nvarchar" MaxLength="50" />
+    <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Doljnost">
+    <Key>
+      <PropertyRef Name="Id_doljnosti" />
+    </Key>
+    <Property Name="Id_doljnosti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Point_of_issue">
+    <Key>
+      <PropertyRef Name="Id_point_of_issue" />
+    </Key>
+    <Property Name="Id_point_of_issue" Type="int" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Street" Type="nvarchar" MaxLength="50" />
+    <Property Name="house_number" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sotrydnik">
+    <Key>
+      <PropertyRef Name="Id_Sotrydnik" />
+    </Key>
+    <Property Name="Id_Sotrydnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Familia" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ima" Type="nvarchar" MaxLength="50" />
+    <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Id_doljnosti" Type="int" />
+    <Property Name="Salary_per_hour" Type="money" />
+    <Property Name="Image" Type="image" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tovar">
+    <Key>
+      <PropertyRef Name="Id_tovar" />
+    </Key>
+    <Property Name="Id_tovar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cena" Type="money" Nullable="false" />
+    <Property Name="Image" Type="image" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Login" />
+    </Key>
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zakaz">
+    <Key>
+      <PropertyRef Name="Id_zakaz" />
+    </Key>
+    <Property Name="Id_zakaz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_buyer" Type="int" />
+    <Property Name="Id_sotrydnik" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Id_tovar" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Id_point_of_issue" Type="int" />
+    <Property Name="Stoimost_zak" Type="money" />
+  </EntityType>
+  <Association Name="FK_Sotrydnik_Doljnost">
+    <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="0..1" />
+    <End Role="Sotrydnik" Type="Self.Sotrydnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doljnost">
+        <PropertyRef Name="Id_doljnosti" />
+      </Principal>
+      <Dependent Role="Sotrydnik">
+        <PropertyRef Name="Id_doljnosti" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zakaz_Buyer">
+    <End Role="Buyer" Type="Self.Buyer" Multiplicity="0..1" />
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buyer">
+        <PropertyRef Name="Id_buyer" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="Id_buyer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zakaz_Point_of_issue">
+    <End Role="Point_of_issue" Type="Self.Point_of_issue" Multiplicity="0..1" />
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Point_of_issue">
+        <PropertyRef Name="Id_point_of_issue" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="Id_point_of_issue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zakaz_Sotrydnik">
+    <End Role="Sotrydnik" Type="Self.Sotrydnik" Multiplicity="0..1" />
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrydnik">
+        <PropertyRef Name="Id_Sotrydnik" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="Id_sotrydnik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zakaz_tovar">
+    <End Role="Tovar" Type="Self.Tovar" Multiplicity="0..1" />
+    <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tovar">
+        <PropertyRef Name="Id_tovar" />
+      </Principal>
+      <Dependent Role="Zakaz">
+        <PropertyRef Name="Id_tovar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище OzonModelContainer">
+    <EntitySet Name="Buyer" EntityType="Self.Buyer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doljnost" EntityType="Self.Doljnost" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Point_of_issue" EntityType="Self.Point_of_issue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sotrydnik" EntityType="Self.Sotrydnik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tovar" EntityType="Self.Tovar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Sotrydnik_Doljnost" Association="Self.FK_Sotrydnik_Doljnost">
+      <End Role="Doljnost" EntitySet="Doljnost" />
+      <End Role="Sotrydnik" EntitySet="Sotrydnik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zakaz_Buyer" Association="Self.FK_Zakaz_Buyer">
+      <End Role="Buyer" EntitySet="Buyer" />
+      <End Role="Zakaz" EntitySet="Zakaz" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zakaz_Point_of_issue" Association="Self.FK_Zakaz_Point_of_issue">
+      <End Role="Point_of_issue" EntitySet="Point_of_issue" />
+      <End Role="Zakaz" EntitySet="Zakaz" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zakaz_Sotrydnik" Association="Self.FK_Zakaz_Sotrydnik">
+      <End Role="Sotrydnik" EntitySet="Sotrydnik" />
+      <End Role="Zakaz" EntitySet="Zakaz" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zakaz_tovar" Association="Self.FK_Zakaz_tovar">
+      <End Role="Tovar" EntitySet="Tovar" />
+      <End Role="Zakaz" EntitySet="Zakaz" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
